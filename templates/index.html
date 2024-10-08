@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriWaterHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('index') }}">Logo</a></li>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('introduction') }}">Introduction</a></li>
+                <li><a href="{{ url_for('analysis') }}">Analysis</a></li>
+                <li><a href="{{ url_for('reference') }}">References</a></li>
+                <li class="try-now-btn-container">
+                    <a href="soil_analysis/templates/{{ url_for('soil_analysis') }}" class="try-now-btn">Try Now</a>
+                </li>
+            </ul>   
+        </nav>
+    </header>
+    
+    <main class="homepage">
+        <section class="content-container">
+            <h1>Introducing the Aqua Yield Optimiser</h1>
+            <p class="intro-paragraph">Navigating Water Challenges for Farmers</p>
+            <p class="intro-paragraph">Welcome to the Aqua Yield Optimiser—an innovative platform designed to empower farmers in their battle against water-related adversities.</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 AgriWaterHub</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="/">Logo</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/introduction">Introduction</a></li>
+                <li><a href="/analysis">Analysis</a></li>
+                <li><a href="/reference">Reference</a></li>
+                <li class="try-now-btn-container"><a href="/soil-analysis" class="try-now-btn">Try Now</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="result-page">
+        <h1>Analysis Result</h1>
+        <p>{{ message }}</p>  <!-- Display the analysis result message passed from the Flask route -->
+    </main>
+    <footer>
+        <p>&copy; 2024 AgriWaterHub</p>
+    </footer>
+</body>
+</html>
