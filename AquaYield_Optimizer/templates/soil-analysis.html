@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soil Analysis - AgriWaterHub</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
+    <style>
+        .container {
+            min-height: 100%;
+            overflow-y: auto;
+        }
+
+        ;
+    </style>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -77,8 +87,9 @@
             </div>
         </main>
         <footer>
-            <p>&copy; 2024 AquaYield Optimizer</p>
+            <p>AquaYield Optimizer © 2024</p>
         </footer>
     </div>
 </body>
+
 </html>

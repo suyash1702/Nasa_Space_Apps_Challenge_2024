@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriWaterHub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <a href="{{ url_for('index') }}">
+                    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="navbar-logo">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('soil_analysis') }}">Soil Analysis</a></li>
+                <li><a href="{{ url_for('information') }}">Information</a></li>
+                <li><a href="{{ url_for('references') }}">References</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="contentArea">
+        <table id="sampleDataTable" class="styled-table">
+            <thead>
+                <tr>
+                    <th>Crop Name</th>
+                    <th>Soil Type</th>
+                    <th>Longitude</th>
+                    <th>Latitude</th>
+                    <th>Age of Crops ( in Days )</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample data rows -->
+                <tr>
+                    <td>Wheat</td>
+                    <td>Loamy</td>
+                    <td>-98.5795</td>
+                    <td>73.691260</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Rice</td>
+                    <td>Clayey</td>
+                    <td>-93.6208</td>
+                    <td>41.5868</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>Soyabean</td>
+                    <td>Silty loam</td>
+                    <td>-88.2434</td>
+                    <td>40.1164</td>
+                    <td>120</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>AquaYield Optimizer © 2024</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const table = document.getElementById('sampleDataTable');
+            
+            // Add zebra striping to table rows
+            const rows = table.querySelectorAll('tbody tr');
+            rows.forEach((row, index) => {
+                if (index % 2 === 0) {
+                    row.classList.add('even-row');
+                }
+            });
+
+            // Add hover effect to table rows
+            rows.forEach(row => {
+                row.addEventListener('mouseover', () => {
+                    row.classList.add('hover-row');
+                });
+                row.addEventListener('mouseout', () => {
+                    row.classList.remove('hover-row');
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .styled-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            max-width: 800px;
+            margin: 25px auto;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .styled-table thead tr {
+            background-color: #3498db;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .styled-table tbody tr:last-of-type td {
+            border-bottom: none;
+        }
+        .styled-table tbody tr.even-row {
+            background-color: #f8f8f8;
+        }
+        .styled-table tbody tr.hover-row:hover {
+            background-color: #e6f7ff;
+            transition: background-color 0.3s ease;
+        }
+        .styled-table th:first-child,
+        .styled-table td:first-child {
+            padding-left: 20px;
+        }
+        .styled-table th:last-child,
+        .styled-table td:last-child {
+            padding-right: 20px;
+        }
+    </style>
+    
+</body>
+</html>

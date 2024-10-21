@@ -18,16 +18,19 @@ body {
 }
 
 .container {
+  margin: 0;
+  padding: 0;
  justify-content: center;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 header {
   background: #22b13a;
   color: #ffffff;
   padding: 0;
+  top: 0;
 }
 
 nav {
@@ -252,13 +255,15 @@ background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, F
 .card:hover .info {
   animation: bounceInSmooth 1.5s ease forwards; /* Slowed animation */
 }
-
 footer {
   text-align: center;
   padding: 15px;
-  background: #8B9467;
+  background: #7fce50; /* Earthy green color */
   color: #ffffff;
-  margin-top: auto;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-top: 20px;
 }
 
 @media (max-width: 768px) {

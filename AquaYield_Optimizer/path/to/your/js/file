@@ -1,0 +1,93 @@
+function createPopupContent(feature) {
+    const properties = feature.properties;
+    return `
+        <table>
+            <tr><th>Longitude</th><td>${feature.geometry.coordinates[0]}</td></tr>
+            <tr><th>Latitude</th><td>${feature.geometry.coordinates[1]}</td></tr>
+            <tr><th>Crop Name</th><td>${properties.cropName}</td></tr>
+            <tr><th>Soil Type</th><td>${properties.soilType}</td></tr>
+            <tr><th>Age of Crops</th><td>${properties.cropAge}</td></tr>
+        </table>
+    `;
+}
+
+// Use this function when creating your popup
+const popup = new mapboxgl.Popup()
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML(createPopupContent(feature))
+    .addTo(map);
+
+// Assuming your data is stored in a variable called 'sampleData'
+
+// 1. Reduce data size
+const essentialData = sampleData.map(item => ({
+    geometry: item.geometry,
+    properties: {
+        cropName: item.properties.cropName,
+        soilType: item.properties.soilType,
+        cropAge: item.properties.cropAge
+    }
+}));
+
+// 2. Implement lazy loading
+function loadDataInChunks(data, chunkSize = 100) {
+    let index = 0;
+    function loadNextChunk() {
+        const chunk = data.slice(index, index + chunkSize);
+        // Add chunk to map here
+        index += chunkSize;
+        if (index < data.length) {
+            setTimeout(loadNextChunk, 0);
+        }
+    }
+    loadNextChunk();
+}
+
+// Use the function
+loadDataInChunks(essentialData);
+
+// Store data in localStorage
+localStorage.setItem('sampleData', JSON.stringify(essentialData));
+
+// Retrieve data
+const cachedData = JSON.parse(localStorage.getItem('sampleData'));
+if (cachedData) {
+    // Use cachedData instead of fetching new data
+} else {
+    // Fetch and process data as usual
+}
+
+function summarizeData(data) {
+    // Example: Group data by crop type and count
+    const summary = data.reduce((acc, item) => {
+        const cropName = item.properties.cropName;
+        acc[cropName] = (acc[cropName] || 0) + 1;
+        return acc;
+    }, {});
+    
+    return Object.entries(summary).map(([crop, count]) => ({
+        cropName: crop,
+        count: count
+    }));
+}
+
+// Use summarized data for initial view
+const summarizedData = summarizeData(originalData);
+displaySummary(summarizedData);
+
+function loadDataForRegion(bounds) {
+    return originalData.filter(item => {
+        const [lng, lat] = item.geometry.coordinates;
+        return lng >= bounds.west && lng <= bounds.east &&
+               lat >= bounds.south && lat <= bounds.north;
+    });
+}
+
+map.on('moveend', () => {
+    const visibleData = loadDataForRegion(map.getBounds());
+    updateMapWithData(visibleData);
+});
+
+function searchData() {
+    // This function is not implemented yet
+}

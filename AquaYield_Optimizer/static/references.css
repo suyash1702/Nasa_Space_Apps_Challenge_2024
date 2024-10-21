@@ -108,7 +108,7 @@ nav {
 main {
     flex-grow: 1;
     padding: 40px 20px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 h1 {
@@ -168,8 +168,12 @@ h1 {
 footer {
     text-align: center;
     padding: 15px;
-    background: #8B9467;
+    background: #7fce50; /* Earthy green color */
     color: #ffffff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
 }
 
 @media (max-width: 768px) {

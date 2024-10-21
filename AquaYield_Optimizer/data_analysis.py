@@ -3,7 +3,7 @@ import numpy as np
 
 # Load the crop data and soil moisture data
 crop_data = pd.read_csv('crop_data.csv')
-soil_data = pd.read_csv('soil_moisture1.csv')
+soil_data = pd.read_csv('soil_moisture2.csv')
 
 # Comment out or remove these print statements
 # print(soil_data.head())

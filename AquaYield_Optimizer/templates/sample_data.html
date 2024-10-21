@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="sample-data-container">
+    <h2>Sample Data for Form Filling</h2>
+    
+    <div class="data-section">
+        <h3>Soil Moisture Data</h3>
+        {{ soil_moisture_table | safe }}
+    </div>
+    
+    <div class="data-section">
+        <h3>Crop Data</h3>
+        {{ crop_data_table | safe }}
+    </div>
+
+    <div class="note">
+        <p><strong>Note:</strong> Use this sample data to test the soil analysis form. Actual results may vary based on real-world conditions.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .sample-data-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .data-section {
+        margin-bottom: 30px;
+    }
+
+    h2, h3 {
+        color: #22b13a;
+    }
+
+    .note {
+        background-color: #f0f0f0;
+        border-left: 4px solid #22b13a;
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    /* Ensure tables are responsive */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 15px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    @media (max-width: 600px) {
+        table, thead, tbody, th, td, tr {
+            display: block;
+        }
+
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        tr {
+            margin-bottom: 10px;
+        }
+
+        td {
+            border: none;
+            position: relative;
+            padding-left: 50%;
+        }
+
+        td:before {
+            content: attr(data-label);
+            position: absolute;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+    }
+</style>
+{% endblock %}

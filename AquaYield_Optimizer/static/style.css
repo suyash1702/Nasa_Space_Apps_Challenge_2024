@@ -5,7 +5,7 @@ body {
     padding: 0;
     background-color: #f2f2f2;
     color: #333;  
-    overflow: hidden;
+    overflow-y: auto; /* Allows vertical scrolling */
 }
 
 header {
@@ -20,7 +20,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin: 0 ;
+    margin: 0;
     padding: 0 20px;
 }
 
@@ -62,7 +62,7 @@ nav {
     position: relative;
     transition: color 0.3s, box-shadow 0.3s;
 }
-.active{
+.active {
     color: #66ff66;
 }
 
@@ -91,6 +91,7 @@ nav {
 .nav-menu li a:hover::after {
     width: 100%; /* Expand the line on hover */
 }
+
 .try-now-btn-container {
     margin-left: auto;
 }
@@ -110,28 +111,29 @@ nav {
 .try-now-btn:hover {
     background-color: #2e865f; /* Darker green color */
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Shadow on hover */
-    transform: translateY(-2px); /* Slight lift effect */
 }
- main{
+
+main {
     flex: 1;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.8);
- }
+    overflow-y: auto; /* Allows vertical scrolling within main */
+}
 
 main.homepage {
     position: relative;
     background: url('./background.avif') no-repeat center center/cover; 
-    height: 100vh;
+    height: calc(100vh - 50px); /* Adjust this value based on your navbar height */
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff; /* Make text white for better visibility */
+    color: #fff;
     text-align: center;
 }
 
 .container {
     min-height: 100%;
-    overflow-y: auto;
+    overflow-y: auto; /* Ensure the container can scroll */
 }
 
 .content-container {
@@ -193,4 +195,65 @@ footer {
 
 .see-more-btn:hover {
     background-color: #45a049;
+}
+
+.sample-data-container {
+    padding: 20px;
+    overflow-x: auto; /* Allows horizontal scrolling if needed */
+}
+
+.data-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.data-table th, .data-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.data-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.data-table tr:hover {
+    background-color: #ddd;
+}
+
+.note-content {
+    display: inline-flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 50px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.moving-note:hover .note-content {
+    background-color: #22b13a;
+    color: white;
+    transform: scale(1.05);
+}
+
+.icon {
+    font-size: 24px;
+    margin: 0 10px;
+}
+
+.message {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.moving-note:hover .message {
+    color: white;
 }
